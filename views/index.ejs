@@ -16,6 +16,13 @@
     align-items: center;
     gap: 4px;
   }
+  input[type="text"], input[type="url"], input {
+    width: 100%;
+    max-width: 600px; /* You can increase this if you want even wider fields */
+    padding: 8px;
+    box-sizing: border-box;
+    margin-top: 4px;
+  }
   </style>
 </head>
 <body>
@@ -32,6 +39,26 @@
         <label><input type="checkbox" name="response_type" value="id_token"> id_token</label>
       </div>
     </div>
+    <div id="pkceSection" style="display: none;">
+      <div class="form-row">
+        <label><input type="checkbox" id="usePkce"> Use PKCE?</label>
+      </div>
+    
+      <div class="form-row" id="tokenEndpointRow" style="display: none;">
+        <label class="form-label">Token Endpoint:</label>
+        <input name="token_endpoint">
+      </div>
+    
+      <div class="form-row" id="codeVerifierRow" style="display: none;">
+        <label class="form-label">Code Verifier:</label>
+        <input name="code_verifier" readonly>
+      </div>
+    
+      <div class="form-row" id="codeChallengeRow" style="display: none;">
+        <label class="form-label">Code Challenge:</label>
+        <input name="code_challenge" readonly>
+      </div>
+    </div>    
     <label>Scope: <input name="scope" value="openid profile email" required></label>
     <label>State: <input name="state"></label>
     <label>Nonce: <input name="nonce"></label>
