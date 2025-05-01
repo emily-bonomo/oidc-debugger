@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OIDC Debugger</title>
+  <style>
+    label { display: block; margin-top: 8px; }
+    textarea { width: 100%; height: 100px; }
+    #authLink { display: block; margin-top: 10px; }
+    .checkbox-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .checkbox-row label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  </style>
+</head>
+<body>
+  <h1>OIDC Debugger</h1>
+  <form id="oidcForm">
+    <label>Client ID: <input name="client_id" required></label>
+    <label>Redirect URI: <input name="redirect_uri" required></label>
+    <label>Authorization Endpoint: <input name="authorization_endpoint" required></label>
+    <div class="form-row">
+      <label class="form-label">Response Type:</label>
+      <div class="checkbox-row">
+        <label><input type="checkbox" name="response_type" value="code"> code</label>
+        <label><input type="checkbox" name="response_type" value="token"> token</label>
+        <label><input type="checkbox" name="response_type" value="id_token"> id_token</label>
+      </div>
+    </div>
+    <label>Scope: <input name="scope" value="openid profile email" required></label>
+    <label>State: <input name="state" value="teststate"></label>
+    <label>Nonce: <input name="nonce" value="testnonce"></label>
+    <label>Audience: <input name="audience"></label>
+  </form>
+
+  <h2>Authorization URL Preview:</h2>
+  <textarea id="authUrlPreview" readonly></textarea>
+  <a id="authLink" href="#" target="_blank">Send Request</a>
+
+  <script src="/display_url.js"></script>
+  
+</body>
+</html>
